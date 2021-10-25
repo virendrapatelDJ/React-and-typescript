@@ -9,10 +9,13 @@ const Todos: React.FC<{ todos: Todo[] }> = (props) => {
     <div className="shadow p-3 m-4 rounded">
       <h1>Todo List</h1>
       <hr />
+
       <table className="table table-bordered">
-        {todos.map((todo, index) => (
-          <TodoItem key={index} todo={todo} />
-        ))}
+        <tbody>
+          {todos.map((todo, index) => (
+            <TodoItem key={index} todo={todo} />
+          ))}
+        </tbody>
       </table>
     </div>
   );

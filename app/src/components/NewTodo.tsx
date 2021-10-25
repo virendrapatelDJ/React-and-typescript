@@ -1,12 +1,13 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { FormEvent } from "react";
 
-const NewTodo = () => {
+const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
   const textRef = useRef<HTMLInputElement>(null);
 
   const submitForm = (event: FormEvent) => {
     event.preventDefault();
-    console.log(textRef.current?.value);
+    console.log(textRef.current!.value); // when we are sure current wiill not be null
+    props.onAddTodo(textRef.current!.value);
   };
 
   return (
