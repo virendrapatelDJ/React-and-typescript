@@ -6,14 +6,12 @@ import Todo from "./models/todo";
 import { useState } from "react";
 
 function App() {
-  const [todos, setTodos] = useState([
-    new Todo("Learn React"),
-    new Todo("Learn Angular"),
-    new Todo("Learn Typescript"),
-  ]);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   function handleAddTodo(text: string) {
-    setTodos([...todos, new Todo(text)]);
+    setTodos((current) => {
+      return current.concat(new Todo(text));
+    });
   }
   return (
     <div className="container">
